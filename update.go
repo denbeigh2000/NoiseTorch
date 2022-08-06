@@ -83,7 +83,7 @@ var latestVersion, _ = semver.Make(strings.TrimLeft(latestRelease, "v"))
 var currentVersion, _ = semver.Make(strings.TrimLeft(version, "v"))
 
 func updateable() bool {
-	return updateURL != "" && publicKeyString != "" && releaseError == nil
+	return updateURL != "" && publicKeyString != "" && releaseError == nil && os.Getenv("NOISETORCH_DISABLE_UPDATES") == ""
 }
 
 func updateCheck(ctx *ntcontext) {
